@@ -17,5 +17,8 @@ path = "src/lib.rs"
 version = "0.3"
 optional = true
 
+[build-dependencies.gcc]
+git = "https://github.com/alexcrichton/gcc-rs"
+
 [features]
 use-pkgconfig = ["pkg-config"]

@@ -1,5 +1,5 @@
 pub mod zip {
-	extern {
+	extern "C" {
 		fn zip_open();
 	}
 
