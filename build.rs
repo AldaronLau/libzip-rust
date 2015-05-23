@@ -1,11 +1,8 @@
-#[cfg(feature="pkg-config")]
-extern crate pkg_config;
+//Libzip compile script
 extern crate gcc;
 
 fn main() {
-	if !build_pkgconfig() {
-	  println!("cargo:rustc-flags=-l zip");
-	}
+	println!("compiling C files....");
 	gcc::Config::new()
 		.file("src/c/mkstemp.c")
 		.file("src/c/zip_file_replace.c")
@@ -86,19 +83,8 @@ fn main() {
 		.file("src/c/zip_source_close.c")
 		.file("src/c/zip_file_rename.c")
 		.file("src/c/zip_source_crc.c")
+		.flag("-lzip")
 		.include("src/c")
 		.compile("libzip_rust.a");
-}
-
-#[cfg(not(feature="pkg-config"))]
-fn build_pkgconfig() -> bool {
-	false
-}
-
-#[cfg(feature="pkg-config")]
-fn build_pkgconfig() -> bool {
-	if pkg_config::find_library("zip").is_err() {
-		panic!("Could not find LibZip via pkgconfig");
-	}
-	true
+	println!("compiled C files!");
 }

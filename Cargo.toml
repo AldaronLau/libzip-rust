@@ -2,23 +2,16 @@
 name = "libzip"
 description = "libzip bindings for Rust"
 repository = "https://github.com/?????"
-version = "0.1.0"
+version = "0.1.1"
 license = "???"
 authors = [ "Jeron Lau <snowtop105@gmail.com>" ]
 keywords = ["libzip", "package", "zip"]
-links = "zip"
+links = "z"
 build = "build.rs"
 
 [lib]
 name = "libzip"
 path = "src/lib.rs"
 
-[build-dependencies.pkg-config]
-version = "0.3"
-optional = true
-
 [build-dependencies.gcc]
 git = "https://github.com/alexcrichton/gcc-rs"
-
-[features]
-use-pkgconfig = ["pkg-config"]

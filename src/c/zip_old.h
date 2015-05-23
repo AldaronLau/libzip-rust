@@ -241,6 +241,18 @@ typedef zip_uint32_t zip_flags_t;
 typedef zip_int64_t (*zip_source_callback)(void *, void *, zip_uint64_t,
 					   enum zip_source_cmd);
 
+
+
+#ifndef ZIP_DISABLE_DEPRECATED
+ZIP_EXTERN zip_int64_t zip_add(struct zip *, const char *, struct zip_source *); /* use zip_file_add */
+ZIP_EXTERN zip_int64_t zip_add_dir(struct zip *, const char *); /* use zip_dir_add */
+ZIP_EXTERN const char *zip_get_file_comment(struct zip *, zip_uint64_t, int *, int); /* use zip_file_get_comment */
+ZIP_EXTERN int zip_get_num_files(struct zip *);  /* use zip_get_num_entries instead */
+ZIP_EXTERN int zip_rename(struct zip *, zip_uint64_t, const char *); /* use zip_file_rename */
+ZIP_EXTERN int zip_replace(struct zip *, zip_uint64_t, struct zip_source *); /* use zip_file_replace */
+ZIP_EXTERN int zip_set_file_comment(struct zip *, zip_uint64_t, const char *, int); /* use zip_file_set_comment */
+#endif
+
 ZIP_EXTERN int zip_archive_set_tempdir(struct zip *, const char *);
 ZIP_EXTERN int zip_close(struct zip *);
 ZIP_EXTERN int zip_delete(struct zip *, zip_uint64_t);

@@ -3,6 +3,7 @@
 
 /// Direct calls to zip functions
 pub mod lzip{
+	#[link(name = "z")]
 	extern "C"{
 		pub fn zip_open(path:*const i8, flags:i32, errorp:*mut i32)
 			-> *mut i8;
